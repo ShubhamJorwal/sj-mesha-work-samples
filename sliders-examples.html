@@ -33,18 +33,19 @@
 
         .full-page {
             width: 100%;
-            height: 40vh;
+            height: 30vh;
         }
 
         /* === Overlay === */
         .overlay {
             width: 100vw;
-            height: 40vh;
+            height: 30vh;
             z-index: 2;
             overflow-x: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: rgba(255, 170, 0, 0.049);
         }
 
         .overlay__backgroundtext {
@@ -77,13 +78,7 @@
 
 
 <style>
-    %transition_all_03s {
-  transition: all 0.3s ease;
-}
-%backface_visibility_hidden {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
+
 
 *,
 *:before,
@@ -96,8 +91,6 @@
 .swiper-container {
   width: 80%;
   height: 80vh;
-  // display:inline-block;
-  // vertical-align:top;
   float: left;
   transition: opacity 0.6s ease, transform 0.3s ease;
   &.nav-slider {
@@ -131,11 +124,8 @@
     visibility: hidden;
   }
 }
-.swiper-wrapper {
-}
 .swiper-slide {
   overflow: hidden;
-  @extend %backface_visibility_hidden;
   .slide-bgimg {
     position: absolute;
     top: 0;
@@ -178,7 +168,7 @@
   width: 44px;
   opacity: 0;
   visibility: hidden;
-  @extend %transition_all_03s;
+  transition: all 0.3s ease;
 }
 .swiper-button-prev {
   transform: translateX(50px);
@@ -351,7 +341,7 @@
 	overflow: hidden;
 	list-style-type: none;
 	height: 100%;
-	width: 100%;
+	width: 100vw;
 	min-height: 60vh;
 	min-width: 100%;
 	flex-direction: column;
@@ -533,7 +523,7 @@
 }
 /* Swiper JS */
 .swiper-full {
-	width: 100%;
+	width: 100vw;
 	height: 100%;
 	padding: 1rem 0 3rem;
 	margin:  0 0 4rem 0;
@@ -553,9 +543,9 @@
 			display: block;
 			width: 100%;
 			height: 100%;
+      height: 500px;
 			object-fit: cover;
 			border-radius: 2rem;
-			// box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4), 0 0 1rem rgba(0, 0, 0, 0.1);
 		}
 	}
 	.swiper-button-next,
@@ -589,19 +579,25 @@
 		width: auto;
 		transform: translate(-50%, 20%);
 		border-radius: 100px;
-		background-color: rgba(0, 0, 0, 0.2);
+		background-color: rgba(248, 174, 0, 0.1);
 		backdrop-filter: blur(10px);
 		.swiper-pagination-bullet {
-			height: 0.8rem;
+			height: 0.7rem;
 			width: 0.8rem;
 			border-radius: 1rem;
 			transition: all 0.4s ease-in-out;
+			background-color: lightgray;
 		}
 		.swiper-pagination-bullet-active {
 			background-color: #fff;
-			width: 2rem;
+			width: 1.87rem;
 		}
 	}
+}
+
+.x4sd5f4ds5 {
+  height: calc(80vh + 85px);
+  width: 100vw;
 }
 
 </style>
@@ -621,7 +617,9 @@
     </div>
 
 
+    <div class="x4sd5f4ds5">
     <h2>Slider 01</h2>
+
     <div class="swiper-container main-slider loading">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -722,12 +720,10 @@
       </div>
 
 
+    </div>
 
 
-      <br>
-      <br>
       <h2>Slider 02</h2>
-      <br>
       <div class="container">
         <div class="slider-wrapper">
             <button id="prev-slide" class="slide-button"><i class="fa-solid fa-chevron-left"></i></button>
@@ -769,12 +765,12 @@
 <div class="🥙">
 	<div class="swiper-full">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-1.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
-			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-2.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
-			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-3.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
-			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-4.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
-			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-5.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
-			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-6.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://images.unsplash.com/photo-1479215932585-5eafc5b0c83a?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OHx8fGVufDB8fHx8fA%3D%3D" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://wallpapercave.com/wp/wp2752752.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://w0.peakpx.com/wallpaper/376/732/HD-wallpaper-high-buildings-building-graphy-abs-high.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://img.freepik.com/premium-photo/view-tall-building-with-many-windows-city-generative-ai_1034559-66070.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://i.pinimg.com/736x/02/15/25/021525507a79c115108090ff2772476c.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://images.deccanherald.com/deccanherald%2Fimport%2Fsites%2Fdh%2Ffiles%2Fgallery_images%2F2022%2F02%2F25%2FMuseum%20of%20the%20Future%20Dubai%20Photo%20(1).jpg?w=1200" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
 		</div>
 		<div class="swiper-pagination"></div>
 		<div class="swiper-button-prev"></div>

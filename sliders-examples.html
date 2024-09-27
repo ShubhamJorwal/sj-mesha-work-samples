@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css">
+    <!-- FontAwesome Link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poiret+One&display=swap');
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #0c0d17 linear-gradient(0deg, rgba(216, 236, 248, .06), rgba(152, 192, 239, .06));
+            /* font-family: Untitled Sans, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif; */
+        
+            font-family: 'Poiret One', cursive !important;
+        }
+
+
+        body,
+        h1 {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Poiret One', cursive !important;
+        }
+
+        .full-page {
+            width: 100%;
+            height: 40vh;
+        }
+
+        /* === Overlay === */
+        .overlay {
+            width: 100vw;
+            height: 40vh;
+            z-index: 2;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay__backgroundtext {
+            position: absolute;
+  font-size: calc(25px + 5vw);
+  letter-spacing: calc(10px + 1vw);
+            z-index: 1;
+            color: #29343d;
+            text-transform: uppercase;
+        }
+
+        .overlay__title {
+            color: #d1dae0;
+            font-size: 55px;
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+
+    
+<style>
+    h2 {
+        text-align: center;
+        padding: 20px;
+        color: white;
+        font-size: 40px;
+    }
+</style>
+
+
+
+<style>
+    %transition_all_03s {
+  transition: all 0.3s ease;
+}
+%backface_visibility_hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 80%;
+  height: 80vh;
+  // display:inline-block;
+  // vertical-align:top;
+  float: left;
+  transition: opacity 0.6s ease, transform 0.3s ease;
+  &.nav-slider {
+    width: 20%;
+    padding-left: 5px;
+    .swiper-slide {
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+      &.swiper-slide-active {
+        opacity: 1;
+      }
+      .content {
+        width: 100%;
+        .title {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  &:hover {
+    .swiper-button-prev,
+    .swiper-button-next {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &.loading {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+  overflow: hidden;
+  @extend %backface_visibility_hidden;
+  .slide-bgimg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+  .entity-img {
+    display: none;
+  }
+  .content {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 50%;
+    padding-left: 5%;
+    color: #fff;
+    .title {
+      font-size: 2.6em;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .caption {
+      display: block;
+      font-size: 13px;
+      line-height: 1.4;
+      transform: translateX(50px);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.7s ease;
+      &.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+}
+[class^="swiper-button-"] {
+  width: 44px;
+  opacity: 0;
+  visibility: hidden;
+  @extend %transition_all_03s;
+}
+.swiper-button-prev {
+  transform: translateX(50px);
+}
+.swiper-button-next {
+  transform: translateX(-50px);
+}
+
+</style>
+
+
+
+
+<style>
+    /* 02 */
+    
+.container {
+    max-width: 1200px;
+    margin: auto;
+    width: 95%;
+}
+.slider-wrapper{
+    position: relative;
+}
+.slider-wrapper .slide-button {
+    position: absolute;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    background-color: #000;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+}
+.slider-wrapper .slide-button:hover{
+    background: #444;
+}
+
+.slider-wrapper .slide-button#prev-slide {
+    left: -20px;
+    display: none;
+}
+
+.slider-wrapper .slide-button#next-slide {
+    right: -20px;
+}
+
+.slider-wrapper .image-list {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(10, 1fr);
+    font-size: 0;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.slider-wrapper .image-list::-webkit-scrollbar {
+    display: none;
+
+}
+
+.slider-wrapper .image-list .image-item {
+    width: 325px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.container .slider-scrollbar {
+    height: 24px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+}
+
+.slider-scrollbar .scrollbar-track {
+    height: 2px;
+    width: 100%;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 4px;
+}
+
+.slider-scrollbar:hover .scrollbar-track {
+    height: 4px;
+}
+
+.slider-scrollbar .scrollbar-thumb {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: #000;
+    border-radius: inherit;
+    cursor: grab;
+}
+
+.slider-scrollbar .scrollbar-thumb:active {
+    cursor: grabbing;
+    height: 8px;
+    top: -2px;
+}
+
+.slider-scrollbar .scrollbar-thumb::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+}
+
+@media (max-width: 1024px){
+    .slider-wrapper .slide-button{
+        display:  none !important;
+    }
+    .slider-wrapper .image-list{
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .slider-wrapper .image-list .image-item{
+        width: 280px;
+        height: 380px;
+    }
+    .slider-scrollbar .scrollbar-thumb{
+        width: 30%;
+    }
+}
+@media (max-width: 768px){
+    .slider-wrapper .slide-button{
+        display:  none !important;
+    }
+    .slider-wrapper .image-list{
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .slider-wrapper .image-list .image-item{
+        width: 220px;
+        height: 320px;
+    }
+    .slider-scrollbar .scrollbar-thumb{
+        width: 20%;
+    }
+}
+</style>
+
+
+
+
+
+<style>
+    /* 03 */
+
+    #artist-list,
+#artist-list * {
+	font-family: "Roboto Condensed", sans-serif;
+	color: #fff;
+	line-height: 24px;
+	font-size: 16px;
+}
+#artist-list {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style-type: none;
+	height: 100%;
+	width: 100%;
+	min-height: 60vh;
+	min-width: 100%;
+	flex-direction: column;
+}
+
+@media only screen and (min-width: 1280px) {
+	#artist-list {
+		flex-direction: row;
+	}
+}
+
+#artist-list li {
+	flex: 1;
+	display: flex;
+	align-items: stretch;
+	cursor: pointer;
+	transition: all 0.35s ease;
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top center;
+	overflow: hidden;
+}
+
+#artist-list li:before {
+	content: "";
+	position: absolute;
+	z-index: 20;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(15, 15, 15, 0.75);
+}
+
+#artist-list li.active {
+	flex: 6;
+	cursor: default;
+}
+
+#artist-list li.active:before {
+	background: linear-gradient(180deg, rgba(15, 15, 15, 0) 0%, #111111 100%);
+}
+
+#artist-list h2 {
+	font-size: 36px;
+	line-height: 36px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+@media only screen and (min-width: 768px) {
+	#artist-list h2 {
+		font-size: 48px;
+		line-height: 48px;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	#artist-list h2 {
+		font-size: 64px;
+		line-height: 64px;
+	}
+}
+
+#artist-list h3 {
+	font-weight: bold;
+	white-space: nowrap;
+	position: absolute;
+	z-index: 30;
+	opacity: 1;
+	top: 50%;
+	left: 50%;
+	transition: top 0.35s, opacity 0.15s;
+	transform-origin: 0 0;
+	font-size: 24px;
+	text-transform: uppercase;
+	transform: translate(-50%, -50%) rotate(0deg);
+	padding-bottom: 3em;
+}
+
+@media only screen and (min-width: 1280px) {
+	#artist-list h3 {
+		top: 100%;
+		left: 50%;
+		font-size: 32px;
+		transform: translate(-20px, -50%) rotate(-90deg);
+	}
+}
+
+#artist-list li.active h3 {
+	opacity: 0;
+	top: 200%;
+}
+
+#artist-list .section-content {
+	position: relative;
+	z-index: 30;
+	opacity: 0;
+	align-self: flex-end;
+	width: 100%;
+	transition: all 0.35s 0.1s ease-out;
+}
+
+#artist-list li.active .section-content {
+	opacity: 1;
+}
+
+#artist-list .inner {
+	position: absolute;
+	display: grid;
+	grid-auto-flow: row;
+	grid-template-columns: 1fr;
+	grid-column-gap: 20px;
+	align-items: flex-end;
+	left: 0;
+	bottom: 0;
+	padding: 20px;
+	opacity: 0;
+	transition: opacity 0.25s ease-out;
+}
+
+@media only screen and (min-width: 768px) {
+	#artist-list .inner {
+		grid-auto-flow: column;
+		grid-template-columns: calc(100% - 340px) 300px;
+		grid-column-gap: 40px;
+		padding: 40px;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	#artist-list .inner {
+		grid-auto-flow: column;
+		grid-template-columns: 460px 200px;
+		grid-column-gap: 40px;
+		padding: 40px;
+	}
+}
+
+#artist-list li.active .inner {
+	opacity: 1;
+}
+
+#artist-list .artist-profile-link {
+	pointer-events: none;
+}
+
+#artist-list li.active .artist-profile-link {
+	pointer-events: all;
+}
+
+#artist-list .artist-profile-link img {
+	margin-top: 1em;
+}
+
+
+</style>
+
+
+
+
+
+<style>
+    /* 04 */
+
+    .🥙 {
+	position: relative;
+	margin: 0 0 2rem 0;
+	h3,
+	p {
+		margin: 0 auto;
+		padding: 0 2rem 1rem;
+		max-width: 800px;
+		a {
+			color: inherit;
+		}
+	}
+}
+/* Swiper JS */
+.swiper-full {
+	width: 100%;
+	height: 100%;
+	padding: 1rem 0 3rem;
+	margin:  0 0 4rem 0;
+	overflow: hidden;
+	.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: transparent;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 56%;
+		@media screen and (max-width: 990px) {
+			width: 88%;
+		}
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 2rem;
+			// box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4), 0 0 1rem rgba(0, 0, 0, 0.1);
+		}
+	}
+	.swiper-button-next,
+	.swiper-button-prev {
+		color: #fff;
+		height: 40px;
+		width: 40px;
+		background-color: rgba(0, 0, 0, 0.4);
+		backdrop-filter: blur(10px);
+		border-radius: 100px;
+		right: 40px;
+		&:after {
+			font-size: 1rem;
+		}
+		@media screen and (max-width: 990px) {
+			display: none;
+		}
+	}
+	.swiper-button-prev {
+		left: 40px;
+	}
+	.swiper-pagination {
+		position: absolute;
+		left: 50%;
+		display: block;
+		text-align: center;
+		font-size: 0;
+		line-height: 0;
+		padding: 8px;
+		margin: 0;
+		width: auto;
+		transform: translate(-50%, 20%);
+		border-radius: 100px;
+		background-color: rgba(0, 0, 0, 0.2);
+		backdrop-filter: blur(10px);
+		.swiper-pagination-bullet {
+			height: 0.8rem;
+			width: 0.8rem;
+			border-radius: 1rem;
+			transition: all 0.4s ease-in-out;
+		}
+		.swiper-pagination-bullet-active {
+			background-color: #fff;
+			width: 2rem;
+		}
+	}
+}
+
+</style>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="full-page">
+        <div class="overlay">
+            <h1 class="overlay__backgroundtext">Sliders</h1>
+            <h1 class="overlay__title">Sliders</h1>
+        </div>
+    </div>
+
+
+    <h2>Slider 01</h2>
+    <div class="swiper-container main-slider loading">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1483985988355-763728e1935b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Shaun Matthews</p>
+              <span class="caption">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1500643752441-4dc90cda350a?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1500643752441-4dc90cda350a?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Alexis Berry</p>
+              <span class="caption">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1465408953385-7c4627c29435?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1465408953385-7c4627c29435?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Billie Pierce</p>
+              <span class="caption">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1538329972958-465d6d2144ed?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTkzNg&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1538329972958-465d6d2144ed?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTkzNg&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Trevor Copeland</p>
+              <span class="caption">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTk1OQ&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTk1OQ&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Bernadette Newman</p>
+              <span class="caption">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+            </div>
+          </div>
+        </div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white"></div>
+      </div>
+      
+      <!-- Thumbnail navigation -->
+      <div class="swiper-container nav-slider loading">
+        <div class="swiper-wrapper" role="navigation">
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1483985988355-763728e1935b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Shaun Matthews</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1500643752441-4dc90cda350a?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1500643752441-4dc90cda350a?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Alexis Berry</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1465408953385-7c4627c29435?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1465408953385-7c4627c29435?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTg2Ng&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Billie Pierce</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1538329972958-465d6d2144ed?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTkzNg&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1538329972958-465d6d2144ed?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTkzNg&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Trevor Copeland</p>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <figure class="slide-bgimg" style="background-image:url(https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTk1OQ&ixlib=rb-1.2.1&q=85)">
+              <img src="https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MDE1NTk1OQ&ixlib=rb-1.2.1&q=85" class="entity-img" />
+            </figure>
+            <div class="content">
+              <p class="title">Bernadette Newman</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <br>
+      <br>
+      <h2>Slider 02</h2>
+      <br>
+      <div class="container">
+        <div class="slider-wrapper">
+            <button id="prev-slide" class="slide-button"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="image-list">
+                <img class="image-item" src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=" img-1">
+                <img class="image-item" src="https://images.unsplash.com/photo-1668649176554-3ad841a780d0?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=" img-2">
+                <img class="image-item" src="https://images.unsplash.com/photo-1627637454030-5ddd536e06e5?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=" img-3">
+                <img class="image-item" src="https://images.unsplash.com/photo-1695634237630-f99602661946?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=" img-4">
+                <img class="image-item" src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c25lYWtlcnN8ZW58MHx8MHx8fDA%3D" alt=" img-5">
+                <img class="image-item" src="https://images.unsplash.com/photo-1622260614153-03223fb72052?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJhY2twYWNrfGVufDB8fDB8fHww" alt=" img-6">
+                <img class="image-item" src="https://media.istockphoto.com/id/458530691/tr/foto%C4%9Fraf/john-deere-cap-on-wood-block.jpg?s=612x612&w=0&k=20&c=f7S74pVLNl088rYgDR_xvM8EG0eomKDIDHD6UCQhejk=" alt=" img-7">
+                <img class="image-item" src="https://images.unsplash.com/photo-1549298916-f52d724204b4?q=80&w=1413&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=" img-8">
+                <img class="image-item" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1420&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=" img-9">
+                <img class="image-item" src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt=" img-10">
+            </div>
+            <button id="next-slide" class="slide-button"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+                <div class="scrollbar-thumb"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <h2>Slider 03</h2>
+
+    <ul id="artist-list">
+        <!-- Artists will be dynamically inserted here by JavaScript -->
+    </ul>
+
+
+
+    <h2>Slider 04</h2>
+
+<!-- Slider main container -->
+<div class="🥙">
+	<div class="swiper-full">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-1.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-2.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-3.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-4.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-5.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+			<div class="swiper-slide"><img src="https://www.kinhealth.it/images/_trattamenti/kin-6.jpg" alt="KinHealth - Trattamenti" class="img-fluid" /></div>
+		</div>
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- // 01 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
+
+<script>
+    // Params
+let mainSliderSelector = ".main-slider",
+  navSliderSelector = ".nav-slider",
+  interleaveOffset = 0.5;
+
+// Main Slider
+let mainSliderOptions = {
+  loop: true,
+  speed: 1000,
+  autoplay: {
+    delay: 3000
+  },
+  loopAdditionalSlides: 10,
+  grabCursor: true,
+  watchSlidesProgress: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  },
+  on: {
+    init: function () {
+      this.autoplay.stop();
+    },
+    imagesReady: function () {
+      this.el.classList.remove("loading");
+      this.autoplay.start();
+    },
+    slideChangeTransitionEnd: function () {
+      let swiper = this,
+        captions = swiper.el.querySelectorAll(".caption");
+      for (let i = 0; i < captions.length; ++i) {
+        captions[i].classList.remove("show");
+      }
+      swiper.slides[swiper.activeIndex]
+        .querySelector(".caption")
+        .classList.add("show");
+    },
+    progress: function () {
+      let swiper = this;
+      for (let i = 0; i < swiper.slides.length; i++) {
+        let slideProgress = swiper.slides[i].progress,
+          innerOffset = swiper.width * interleaveOffset,
+          innerTranslate = slideProgress * innerOffset;
+
+        swiper.slides[i].querySelector(".slide-bgimg").style.transform =
+          "translateX(" + innerTranslate + "px)";
+      }
+    },
+    touchStart: function () {
+      let swiper = this;
+      for (let i = 0; i < swiper.slides.length; i++) {
+        swiper.slides[i].style.transition = "";
+      }
+    },
+    setTransition: function (speed) {
+      let swiper = this;
+      for (let i = 0; i < swiper.slides.length; i++) {
+        swiper.slides[i].style.transition = speed + "ms";
+        swiper.slides[i].querySelector(".slide-bgimg").style.transition =
+          speed + "ms";
+      }
+    }
+  }
+};
+let mainSlider = new Swiper(mainSliderSelector, mainSliderOptions);
+
+// Navigation Slider
+let navSliderOptions = {
+  loop: true,
+  loopAdditionalSlides: 10,
+  speed: 1000,
+  spaceBetween: 5,
+  slidesPerView: 5,
+  centeredSlides: true,
+  touchRatio: 0.2,
+  slideToClickedSlide: true,
+  direction: "vertical",
+  on: {
+    imagesReady: function () {
+      this.el.classList.remove("loading");
+    },
+    click: function () {
+      mainSlider.autoplay.stop();
+    }
+  }
+};
+let navSlider = new Swiper(navSliderSelector, navSliderOptions);
+
+// Matching sliders
+mainSlider.controller.control = navSlider;
+navSlider.controller.control = mainSlider;
+
+</script>
+
+
+<!-- 02 -->
+<script>
+    const initSlider = () => {
+    const imageList = document.querySelector(".slider-wrapper .image-list");
+    const slideButtons = document.querySelectorAll(".slider-wrapper .slide-button");
+    const sliderScrollbar = document.querySelector(".container .slider-scrollbar");
+    const scrollbarThumb = document.querySelector(".scrollbar-thumb");
+
+    const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+
+    // Handle scrollbar thumb drag
+    scrollbarThumb.addEventListener("mousedown", (e) => {
+        const startX = e.clientX;
+        const thumbPosition = scrollbarThumb.offsetLeft;
+
+        const handleMouseMove = (e) => {
+            const deltaX = e.clientX - startX;
+            const newThumbPosition = thumbPosition + deltaX;
+            const maxThumbPosition = sliderScrollbar.getBoundingClientRect().width - scrollbarThumb.offsetWidth;
+
+            const boundedPosition = Math.max(0, Math.min(maxThumbPosition,newThumbPosition));
+            const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
+            
+            scrollbarThumb.style.left = `${newThumbPosition}px`;
+            imageList.scrollLeft = scrollPosition;
+        }
+
+
+        // Remove event listeners on mouse up
+        const handleMouseUp = () => {
+            document.removeEventListener("mousemove", handleMouseMove);
+            document.removeEventListener("mouseup", handleMouseUp);
+        }
+
+        // Add event listener for drag interaction
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseup", handleMouseUp);
+
+    })
+
+    // Slide images according to the slide button clicks.
+    slideButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const direction = button.id === "prev-slide" ? -0.5 : 0.5;
+            const scrollAmount = imageList.clientWidth * direction;
+            imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        });
+    });
+
+    const handleSlideButtons = () => {
+        slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "block";
+        slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "block";
+    }
+    //Update scrollbar thumb position based on image scroll
+    const updateScrollThumbPosition = () => {
+        const scrollPosition = imageList.scrollLeft;
+        const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+        scrollbarThumb.style.left = `${thumbPosition}px`
+    }
+
+    imageList.addEventListener("scroll", () => {
+        handleSlideButtons();
+        updateScrollThumbPosition();
+    })
+}
+window.addEventListener("load", initSlider);
+
+</script>
+
+
+
+<!-- 03 -->
+<script>
+    
+const artistData = {
+	active: 0,
+	artists: [
+		{
+			name: "Dom Dolla",
+			description: `Dom Dolla is one of the latest Australian DJ/Producers to break globally following a succession of releases like “Take It”, “San Frandisco” & “Pump The Brakes”. Dom’s unique blend of house music has amassed over 300 million+ streams, Platinum-certified records, ARIA Award for Best Dance Release, back to back Beatport #1’s, US Billboard Dance top 10’s, triple j’s hottest 100, Shazam & Spotify Global top 100 charts.`,
+			spotify: {
+				profileUrl:
+					"https://open.spotify.com/artist/205i7E8fNVfojowcQSfK9m?si=HidnJ9jEQ5aK-dKZEZWdLw",
+				embedUrl:
+					"https://open.spotify.com/embed/artist/205i7E8fNVfojowcQSfK9m?utm_source=generator"
+			},
+			backgroundUrl: "https://assets.codepen.io/152347/dom-dolla.jpg"
+		},
+		{
+			name: "Crooked Colours",
+			description: `Crooked Colours are a three-piece band formed in Perth, Western Australia, consisting of members Phil Slabber, Leon Debaughn and Liam Merrett-Park. Starting out as house party DJs before forming in 2013, the trio have amassed a large following, peaking at number 1 on the Australian Dance Album ARIA Charts for their album "Langata".`,
+			spotify: {
+				profileUrl:
+					"https://open.spotify.com/artist/0aA1GTrIMutjIh4GlPPUVN?si=N6CkDtcYQx-O4Zehl6CPag",
+				embedUrl:
+					"https://open.spotify.com/embed/artist/0aA1GTrIMutjIh4GlPPUVN?utm_source=generator"
+			},
+			backgroundUrl: "https://assets.codepen.io/152347/crooked-colours.jpg"
+		},
+		{
+			name: "Mallrat",
+			description: `Grace Kathleen Elizabeth Shaw, known professionally as Mallrat, is a 23-year-old Australian musician, singer, and rapper from Brisbane. Mallrat released her official debut single, “Suicide Blonde” in 2015 whilst in her last year of High School. Since then, she has gone on to release three EPs: Uninvited (2016), In the Sky (2018) and Driving Music (2019).`,
+			spotify: {
+				profileUrl:
+					"https://open.spotify.com/artist/4OSArit7O2Jaj4mgf3YN7A?si=NBgyC_b_QNujIr2Ubd2fSw",
+				embedUrl:
+					"https://open.spotify.com/embed/artist/4OSArit7O2Jaj4mgf3YN7A?utm_source=generator"
+			},
+			backgroundUrl: "https://assets.codepen.io/152347/mallrat.jpg"
+		},
+		{
+			name: "Allday",
+			description: `Tom Gaynor, better known by his stage name “Allday”, is an Australian rapper from Adelaide, South Australia. Allday became active in 2011, when Gaynor began uploading his music for free online. Millennial rapper Allday got his break with a pair of radio hits in his home country of Australia in 2014. "Right Now" and "You Always Know the DJ" were included on his debut album, Startup Cult. Since his debut, Allday continues to establish himself as a household name with tracks like “Wonder Drug” and “Protection” which received ARIA Gold awards.`,
+			spotify: {
+				profileUrl:
+					"https://open.spotify.com/artist/2Ltr0s15RyvsjqWzSmiSRs?si=uTbBZc32RhC75qp7tlOfzw",
+				embedUrl:
+					"https://open.spotify.com/embed/artist/2Ltr0s15RyvsjqWzSmiSRs?utm_source=generator"
+			},
+			backgroundUrl: "https://assets.codepen.io/152347/allday.jpg"
+		},
+		{
+			name: "Boo Seeka",
+			description: `Boo Seeka is the artist name of Australian electro-pop singer-songwriter, Ben Gumbleton. After bursting onto the scene in 2015 with his debut song, Kingdom Leader - he has continued to establish himself as a must-see live act with his unmatchable energy, and continuous flow of hits such as Deception Bay, Oh My, Does This Last, Never Enough & Don’t Waste Your Love.`,
+			spotify: {
+				profileUrl:
+					"https://open.spotify.com/artist/1SFz3S9eSUTc49ysstadiO?si=C3KO89rcTbeJqZzsdedesA",
+				embedUrl:
+					"https://open.spotify.com/embed/artist/1SFz3S9eSUTc49ysstadiO?utm_source=generator"
+			},
+			backgroundUrl: "https://assets.codepen.io/152347/boo-seeka.jpg"
+		},
+		{
+			name: "Running Touch",
+			description: `Running Touch is a triple threat singer, songwriter and producer.
+      His first project ‘A Body Slow’ hit #1 on itunes electronic album. Fast forward to 2018 ‘My Hands’ gained global attention being added to major playlists around the world and voted sexiest song by Triple J listeners. His follow up Single a collaboration with Hayden James ‘Better Together’ is an international hit that reached #1 on iTunes USA.`,
+			spotify: {
+				profileUrl:
+					"https://open.spotify.com/artist/5bdwzvp6eirvqh0TwOwjgE?si=89zOMpUxQ-yHGnDcYs0M_w",
+				embedUrl:
+					"https://open.spotify.com/embed/artist/5bdwzvp6eirvqh0TwOwjgE?utm_source=generator"
+			},
+			backgroundUrl: "https://assets.codepen.io/152347/running-touch.jpg"
+		}
+	]
+};
+
+function nextSlide() {
+	if (artistData.active < artistData.artists.length - 1) {
+		artistData.active += 1;
+	}
+}
+
+function prevSlide() {
+	if (artistData.active > 0) {
+		artistData.active -= 1;
+	}
+}
+
+// Assuming the artistData object and functions from the previous code
+
+document.addEventListener("DOMContentLoaded", function () {
+	const artistList = document.getElementById("artist-list");
+
+	// Populate the artist list
+	artistData.artists.forEach((artist, i) => {
+		const li = document.createElement("li");
+		li.style.backgroundImage = `url(${artist.backgroundUrl})`;
+		li.className = artistData.active === i ? "active" : "";
+
+		li.addEventListener("click", function () {
+			artistData.active = i;
+			updateActiveSlide();
+		});
+
+		const h3 = document.createElement("h3");
+		h3.textContent = artist.name;
+
+		const sectionContent = document.createElement("div");
+		sectionContent.className = "section-content";
+		const inner = document.createElement("div");
+		inner.className = "inner";
+
+		const bio = document.createElement("div");
+		bio.className = "bio";
+		const h2 = document.createElement("h2");
+		h2.textContent = artist.name;
+		const p = document.createElement("p");
+		p.textContent = artist.description;
+
+		const spotifyLink = document.createElement("a");
+		spotifyLink.href = artist.spotify.profileUrl;
+		spotifyLink.target = "_blank";
+		spotifyLink.className = "artist-profile-link";
+		const spotifyImg = document.createElement("img");
+		spotifyImg.src = "https://assets.codepen.io/152347/spotify-badge.svg";
+		spotifyImg.alt = "Listen on Spotify";
+		spotifyImg.width = 176;
+		spotifyImg.height = 64;
+		spotifyImg.loading = "lazy";
+
+		spotifyLink.appendChild(spotifyImg);
+		bio.appendChild(h2);
+		bio.appendChild(p);
+		bio.appendChild(spotifyLink);
+		inner.appendChild(bio);
+		sectionContent.appendChild(inner);
+		li.appendChild(h3);
+		li.appendChild(sectionContent);
+		artistList.appendChild(li);
+	});
+
+	function updateActiveSlide() {
+		const listItems = artistList.querySelectorAll("li");
+		listItems.forEach((li, index) => {
+			li.className = artistData.active === index ? "active" : "";
+		});
+	}
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- 04 -->
+<script>
+const swiperFull = new Swiper(".swiper-full", {
+	autoplay: {
+		delay: 3000
+	},
+	slidesPerView: "auto",
+	centeredSlides: true,
+	spaceBetween: 32,
+	loop: true,
+	pagination: {
+		el: ".swiper-pagination",
+		// dynamicBullets: true,
+		clickable: true,
+		renderBullet: function (index, className) {
+			return '<span class="' + className + '">' + (index + 1) + "</span>";
+		}
+	},
+	navigation: {
+		nextEl: ".swiper-button-next",
+		prevEl: ".swiper-button-prev"
+	}
+});
+$(".swiper-full").mouseenter(function () {
+	swiperFull.autoplay.stop();
+});
+$(".swiper-full").mouseleave(function () {
+	swiperFull.autoplay.start();
+});
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

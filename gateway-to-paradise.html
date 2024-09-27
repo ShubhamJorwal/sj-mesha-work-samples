@@ -5,7 +5,207 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gateway to Paradise</title>
 </head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        
+    background: #0c0d17 linear-gradient(0deg,rgba(216,236,248,.06),rgba(152,192,239,.06));
+    font-family: Untitled Sans, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+
+    }
+    
+.bg {
+  animation:slide 7s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #00031c 50%, #000000 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:8s;
+}
+
+.bg3 {
+  animation-duration:9s;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+
+
+
+
+
+
+
+.bg-all {
+    background: transparent;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 9999;
+}
+.titel{
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+.culd{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #07489e;
+    transform-origin: top left;
+    transform: scale(0) rotate(0deg) translate(-50%,-50%);
+    animation: culd 2s  ease-in forwards infinite;
+}
+.culd:nth-child(2n){
+    border-color: #07489e;
+}
+.culd:nth-child(2){
+    animation-delay: 2s;
+    top: 90%;
+    left: 10%;
+}
+.culd:nth-child(3){
+    animation-delay: 4s;
+    top: 10%;
+    left: 50%;
+}
+.culd:nth-child(4){
+    animation-delay: 6s;
+    top: 50%;
+    left: 60%;
+}
+.culd:nth-child(5){
+    animation-delay: 8s;
+    top: 40%;
+    left: 90%;
+}
+@keyframes culd{
+    from{
+        transform: scale(0) rotate(0deg) translate(-50%,-50%);
+        opacity: 1;
+    }
+    to{
+        transform: scale(20) rotate(360deg) translate(-50%,-50%);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+.butckgroudlsx {
+    width: 100%;
+    height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    .butcks45xs3s{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 40px;
+        row-gap: 30px;
+        a {
+            background: #d8ecf8;
+            height: 140px;
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 20px;
+            
+    box-shadow: 
+    -1em -0.2em 0.4em -1.1em #c2ccff,
+    inset 0em 0em 0em 2px #c2ccff,
+    inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
+    inset -1.2em 2.3em 2em -0.5em #d4e6ff2f;
+    background: #121521;
+    z-index: 1;
+    filter: brightness(0.8);
+    background: repeating-radial-gradient( at 50% 50%, transparent 0%, #c2ccff22 2px, transparent 4px);
+
+            color: white;
+            background: #0c0d17;
+            transition: .2s all;
+            &:hover {
+                border-radius: 80px;
+                transform: scale(1.1);
+
+
+                
+            background: #fff0f827;
+    box-shadow: 
+    -1em -0.2em 0.4em -1.1em #fff0c2,
+    inset 0em 0em 0em 2px #fff0ff,
+    inset 0.2em 0.3em 0.2em -0.2em #fff0ff,
+    inset -1.2em 2.3em 2em -0.5em #fff2d42f;
+            }
+
+        }
+    }
+}
+
+
+
+</style>
 <body>
-    <h1>Gateway to Paradise</h1>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="bg-all">
+        <div class="culd"></div>
+        <div class="culd"></div>
+        <div class="culd"></div>
+        <div class="culd"></div>
+        <div class="culd"></div>
+
+        <div class="butckgroudlsx">
+            <div class="butcks45xs3s">
+                <a href="/buttons-animations.html">Buttons</a>
+                <a href="/backgrounds.html">Backgrounds</a>
+                <a href="/sliders-examples.html">Sliders</a>
+                <a href="/cursors.html">Cursors</a>
+                <!-- <a href="/buttons-animations.html">3D Animations</a> -->
+                <!-- <a href="/buttons-animations.html">Random Art</a> -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
 </body>
 </html>

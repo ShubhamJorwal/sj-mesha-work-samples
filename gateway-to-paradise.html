@@ -141,7 +141,10 @@
         justify-content: center;
         gap: 40px;
         row-gap: 30px;
-
+        @media (max-width:600px) { 
+            gap: 20px;
+            row-gap: 20px;
+        }
 
         a {
             background: #d8ecf8;
@@ -172,9 +175,9 @@
 
             @media (max-width:600px) {
             
-                height: 100px;
-            width: 150px;
-            border-radius: 30px;
+                height: 80px;
+            width: 130px;
+            border-radius: 20px;
             font-size: 16px;
         }
 

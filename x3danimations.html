@@ -310,6 +310,7 @@
         height: 80vh;
         width: 100vw;
         position: relative;
+        overflow: hidden;
 }
 
 ol, ul {
@@ -1518,7 +1519,11 @@ h1 span, #navbar h1 a {
   right: -100%; }
 
 .controls-open #controls {
-  right: 0px; }
+  right: 0px; 
+  @media (max-width:600px) {
+    right: 0 !important;
+  }
+}
 
 #data a {
   margin-bottom: 1px;
@@ -1998,7 +2003,19 @@ h1 {
 
 
 
+<style>
 
+@media (max-width:600px) {
+
+  .s545sdfnavbar5s {
+    display: flex;
+    align-items: center;
+    gap: 120px;
+    justify-content: center;
+    width: fit-content !important;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -2066,9 +2083,9 @@ h1 {
     <h2>Animations 03</h2>
     <div class="fxssdks03">
         <body class="opening hide-UI view-2D zoom-large data-close controls-close">
-            <div id="navbar">
+            <div id="navbar" class="s545sdfnavbar5s">
               <a id="toggle-data" href="#data"><i class="icon-data"></i>Data</a>
-              <h1><br><span>
+              <br><span>
               <a id="toggle-controls" href="#controls"><i class="icon-controls"></i>Controls</a>
             </div>
             <div id="data">
@@ -2102,6 +2119,8 @@ h1 {
                 <span>Distance</span>
               </label>
             </div>
+
+
             <div id="universe" class="scale-stretched">
               <div id="galaxy">
                 <div id="solar-system" class="earth">

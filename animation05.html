@@ -59,8 +59,23 @@
     /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     margin-left: -40px;
     
+    i { 
+        display: none;
+    }
     @media (max-width:600px) {
    margin: auto;
+   padding-right: 50px;
+   font-size: 2rem;
+
+   i {
+            font-size: 28px;
+            color: #c2ccffb8;
+            position: absolute;
+            right: 0px;
+            top: 10px;
+          
+            display: flex !important;
+        }
 }
 
 /* 
@@ -706,8 +721,11 @@ p {
     color: #fff;
     width: 100%;
     text-align: center;
-    padding: 16em 0 12em 0;
+    padding: 16em 0 11em 0;
     overflow: hidden;
+
+    @media (max-width:600px) {
+    }
 }
 
 .content-section p.subt {
@@ -895,8 +913,8 @@ p {
         
         <div class="xsdfsdfsdfds"> 
 
-            <h2>Gateway to Paradise</h2>
-            <h2>Gateway to Paradise</h2>
+            <h2>Gateway to Paradise <i class="fas fa-link"></i></h2>
+            <h2>Gateway to Paradise <i class="fas fa-link"></i></h2>
 
 
             <i class="fas fa-link"></i>
